@@ -11,7 +11,7 @@ const GetAluno = () => {
         const dados = await resposta.json();
         console.log(JSON.stringify(dados));
 
-        setProfessor(dados);
+        setAluno(dados);
       } catch (error) {
         console.log(error);
       }
@@ -27,16 +27,16 @@ const GetAluno = () => {
         <thead>
           <tr>
             <th>Nome</th>
-            <th>Data de Nascimento</th>
-            <th>Telefone</th>
+            <th>Curso</th>
+            <th>RA</th>
             <th>Email</th>
           </tr>
         </thead>
         <tbody>
           <tr key={aluno.id}>
             <td>{aluno.nome}</td>
-            <td>{aluno.dataNascimento}</td>
-            <td>{aluno.telefone}</td>
+            <td>{aluno.curso}</td>
+            <td>{aluno.ra}</td>
             <td>{aluno.email}</td>
           </tr>
         </tbody>
