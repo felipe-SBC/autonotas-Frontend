@@ -44,9 +44,9 @@ const CreateAluno = () => {
         <label>
           Data de nascimento:
           <input
-            name="data_nascimento"
-            type="date"
-            value={aluno.dataNascimento || ""}
+            name="curso"
+            type="text"
+            value={aluno.curso || ""}
             onChange={handleChange}
           />
         </label>
@@ -55,9 +55,9 @@ const CreateAluno = () => {
         <label>
           Telefone:
           <input
-            name="telefone"
+            name="ra"
             type="text"
-            value={aluno.telefone || ""}
+            value={aluno.ra || ""}
             onChange={handleChange}
           />
         </label>
@@ -69,6 +69,17 @@ const CreateAluno = () => {
             name="email"
             type="text"
             value={aluno.email || ""}
+            onChange={handleChange}
+          />
+        </label>
+        <br />
+        <br />
+        <label>
+          Email:
+          <input
+            name="senha"
+            type="password"
+            value={aluno.senha || ""}
             onChange={handleChange}
           />
         </label>
