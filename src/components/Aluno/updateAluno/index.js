@@ -89,9 +89,9 @@ const UpdateAluno = () => {
         <label>
           Data de nascimento:
           <input
-            name="dataNascimento"
-            type="date"
-            value={aluno.dataNascimento || ""}
+            name="curso"
+            type="text"
+            value={aluno.curso || ""}
             onChange={handleChange}
           />
         </label>
@@ -100,9 +100,9 @@ const UpdateAluno = () => {
         <label>
           Telefone:
           <input
-            name="telefone"
+            name="ra"
             type="text"
-            value={aluno.telefone || ""}
+            value={aluno.ra || ""}
             onChange={handleChange}
           />
         </label>
