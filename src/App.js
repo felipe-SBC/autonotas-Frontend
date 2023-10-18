@@ -5,6 +5,7 @@ import GetProfessor from "./components/Professor/getProfessor";
 import UpdateProfessor from "./components/Professor/updateProfessor";
 import CreateAluno from "./components/Aluno/createAluno";
 import GetAluno from "./components/Aluno/getAluno";
+import UpdateAluno from "./components/Aluno/updateAluno"
 const App = () => {
   return (
     <Router>
@@ -13,7 +14,7 @@ const App = () => {
         <Route path="/professor/update" element={<UpdateProfessor />} />
         <Route path="/professor/get" element={<GetProfessor />} />
         <Route path="/aluno/create" element={<CreateAluno />} />
-        <Route path="/aluno/update" element={<UpdateProfessor />} />
+        <Route path="/aluno/update" element={<UpdateAluno />} />
         <Route path="/aluno/get" element={<GetAluno />} />
       </Routes>
     </Router>
