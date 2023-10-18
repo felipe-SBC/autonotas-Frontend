@@ -12,7 +12,7 @@ const UpdateAluno = () => {
   useEffect(() => {
     const consulta = async () => {
       try {
-        const resposta = await fetch("http://localhost:8080/alunos/2");
+        const resposta = await fetch("http://localhost:8080/alunos/1");
 
         const dados = await resposta.json();
         console.log(JSON.stringify(dados));
@@ -87,7 +87,7 @@ const UpdateAluno = () => {
         <br />
         <br />
         <label>
-          Data de nascimento:
+          Curso:
           <input
             name="curso"
             type="text"
@@ -98,7 +98,7 @@ const UpdateAluno = () => {
         <br />
         <br />
         <label>
-          Telefone:
+          RA:
           <input
             name="ra"
             type="text"
