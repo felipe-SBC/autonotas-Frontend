@@ -42,7 +42,7 @@ const CreateAluno = () => {
         <br />
         <br />
         <label>
-          Data de nascimento:
+          Curso:
           <input
             name="curso"
             type="text"
@@ -53,7 +53,7 @@ const CreateAluno = () => {
         <br />
         <br />
         <label>
-          Telefone:
+          RA:
           <input
             name="ra"
             type="text"
@@ -75,7 +75,7 @@ const CreateAluno = () => {
         <br />
         <br />
         <label>
-          Email:
+          Senha:
           <input
             name="senha"
             type="password"
