@@ -1,3 +1,4 @@
+import { TextField, Grid, Button, Typography } from "@mui/material";
 import React, { useState } from "react";
 
 const CreateProfessor = () => {
@@ -29,52 +30,22 @@ const CreateProfessor = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h4>Fazer cadastro</h4>
-        <label>
-          Nome:
-          <input
-            name="nome"
-            type="text"
-            value={professor.nome || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          Data de nascimento:
-          <input
-            name="data_nascimento"
-            type="date"
-            value={professor.dataNascimento || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          Telefone:
-          <input
-            name="telefone"
-            type="text"
-            value={professor.telefone || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          Email:
-          <input
-            name="email"
-            type="text"
-            value={professor.email || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <input type="submit" />
+        <Typography variant="h5">Fazer Cadastro</Typography>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField id="nome" name="nome" label="Nome" value={professor.nome} onChange={handleChange} variant="outlined"/>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField id="telefone" name="telefone" label="Telefone" value={professor.telefone} onChange={handleChange} variant="outlined"/>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField id="email" name="email" type="email" label="Email" value={professor.email} onChange={handleChange} variant="outlined"/>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField id="senha" type="password" name="senha" label="Senha" value={professor.senha} onChange={handleChange} variant="outlined"/>
+          </Grid>
+        </Grid>
+        <Button type="submit">Enviar</Button>
       </form>
     </div>
   );
