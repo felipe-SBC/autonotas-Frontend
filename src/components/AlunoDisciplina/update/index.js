@@ -1,23 +1,23 @@
 import { useState, useEffect } from "react";
 
-const UpdateAluno = () => {
-  const [aluno, setAluno] = useState({});
+const UpdateAlunoDisciplina = () => {
+  const [alunoDisciplina, setAlunoDisciplina] = useState({});
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setAluno((values) => ({ ...values, [name]: value }));
+    setAlunoDisciplina((values) => ({ ...values, [name]: value }));
   };
 
   useEffect(() => {
     const consulta = async () => {
       try {
-        const resposta = await fetch("http://localhost:8080/alunos/1");
+        const resposta = await fetch("http://localhost:8080/alunosDisciplinas/2");
 
         const dados = await resposta.json();
         console.log(JSON.stringify(dados));
 
-        setAluno(dados);
+        setAlunoDisciplina(dados);
       } catch (error) {
         console.log(error);
       }
@@ -28,13 +28,13 @@ const UpdateAluno = () => {
   const handleClick = async (event) => {
     try {
       const resposta = await fetch(
-        `http://localhost:8080/alunos/${aluno.id}`,
+        `http://localhost:8080/alunosDisciplinas/${alunoDisciplina.idAlunoDisciplina}`,
         {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(aluno)
+          body: JSON.stringify(alunoDisciplina)
         }
       );
       return resposta;
@@ -45,14 +45,14 @@ const UpdateAluno = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    alert(JSON.stringify(aluno));
+    alert(JSON.stringify(alunoDisciplina));
     try {
-      const resposta = await fetch("http://localhost:8080/alunos", {
+      const resposta = await fetch("http://localhost:8080/alunosDisciplinas", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(aluno)
+        body: JSON.stringify(alunoDisciplina)
       });
       return resposta;
     } catch (error) {
@@ -63,78 +63,52 @@ const UpdateAluno = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h4>Atualizar Dados do Aluno</h4>
+        <h4>{`Atualizar Notas do aluno ${alunoDisciplina.nomeAluno} em ${alunoDisciplina.nomeDisciplina}`}</h4>
         <label>
-          Id:
+          Nota 1:
           <input
-            name="id"
-            type="text"
-            value={aluno.id || ""}
+            name="nota1"
+            value={alunoDisciplina.nota1 || ""}
             onChange={handleChange}
           />
         </label>
         <br />
         <br />
         <label>
-          Nome:
+          Nota 2:
           <input
-            name="nome"
-            type="text"
-            value={aluno.nome || ""}
+            name="nota2"
+            value={alunoDisciplina.nota2 || ""}
             onChange={handleChange}
           />
         </label>
         <br />
         <br />
         <label>
-          Curso:
+          Nota de Atividade:
           <input
-            name="curso"
-            type="text"
-            value={aluno.curso || ""}
+            name="notaAtividade"
+            value={alunoDisciplina.notaAtividade || ""}
             onChange={handleChange}
           />
         </label>
         <br />
         <br />
         <label>
-          RA:
+          Média:
           <input
-            name="ra"
-            type="text"
-            value={aluno.ra || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          CEP:
-          <input
-            name="cep"
-            type="text"
-            value={aluno.cep || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          Email:
-          <input
-            name="email"
-            type="text"
-            value={aluno.email || ""}
+            name="media"
+            value={alunoDisciplina.media || ""}
             onChange={handleChange}
           />
         </label>
         <br />
         <br />
         <input type="submit" />
-        <button onClick={handleClick}>Deletar Aluno</button>
+        <button onClick={handleClick}>Deletar Aluno em Disciplina</button>
       </form>
     </div>
   );
 };
 
-export default UpdateAluno;
+export default UpdateAlunoDisciplina;

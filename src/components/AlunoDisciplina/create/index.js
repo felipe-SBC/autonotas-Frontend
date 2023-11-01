@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 
-const CreateAluno = () => {
-  const [aluno, setAluno] = useState({});
+const CreateAlunoDisciplina = () => {
+  const [alunoDisciplina, setAlunoDisciplina] = useState({});
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setAluno((values) => ({ ...values, [name]: value }));
+    setAlunoDisciplina((values) => ({ ...values, [name]: value }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    alert(JSON.stringify(aluno));
+    alert(JSON.stringify(alunoDisciplina));
     try {
-      const resposta = await fetch("http://localhost:8080/alunos", {
+      const resposta = await fetch("http://localhost:8080/alunosDisciplinas", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(aluno)
+        body: JSON.stringify(alunoDisciplina)
       });
       return resposta;
     } catch (error) {
@@ -29,68 +29,68 @@ const CreateAluno = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h4>Fazer cadastro</h4>
+        <h4>Adicionar Aluno em uma Disciplina</h4>
         <label>
-          Nome:
+          Id da Disciplina:
           <input
-            name="nome"
+            name="idDisciplina"
             type="text"
-            value={aluno.nome || ""}
+            value={alunoDisciplina.idDisciplina || ""}
             onChange={handleChange}
           />
         </label>
         <br />
         <br />
         <label>
-          Curso:
+          Id do Aluno:
           <input
-            name="curso"
+            name="idAluno"
             type="text"
-            value={aluno.curso || ""}
+            value={alunoDisciplina.idAluno || ""}
             onChange={handleChange}
           />
         </label>
         <br />
         <br />
         <label>
-          RA:
+          Nota 1:
           <input
-            name="ra"
+            name="nota1"
             type="text"
-            value={aluno.ra || ""}
+            value={alunoDisciplina.nota1 || ""}
             onChange={handleChange}
           />
         </label>
         <br />
         <br />
         <label>
-          CEP:
+          Nota 2:
           <input
-            name="cep"
+            name="nota2"
             type="text"
-            value={aluno.cep || ""}
+            value={alunoDisciplina.nota2 || ""}
             onChange={handleChange}
           />
         </label>
         <br />
         <br />
         <label>
-          Email:
+          Nota Atividade:
           <input
-            name="email"
+            name="notaAtividade"
             type="text"
-            value={aluno.email || ""}
+            value={alunoDisciplina.notaAtividade || ""}
             onChange={handleChange}
           />
         </label>
         <br />
         <br />
         <label>
-          Senha:
+          Média:
           <input
-            name="senha"
-            type="password"
-            value={aluno.senha || ""}
+            name="media"
+            type="text"
+            value={alunoDisciplina.media || ""}
             onChange={handleChange}
           />
         </label>
@@ -102,4 +102,4 @@ const CreateAluno = () => {
   );
 };
 
-export default CreateAluno;
+export default CreateAlunoDisciplina;
