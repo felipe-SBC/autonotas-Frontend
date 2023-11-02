@@ -12,6 +12,8 @@ import GetDisciplina from "./components/Disciplina/get";
 import CreateAlunoDisciplina from "./components/AlunoDisciplina/create";
 import GetAlunoDisciplina from "./components/AlunoDisciplina/get";
 import UpdateAlunoDisciplina from "./components/AlunoDisciplina/update";
+import LoginProfessor from "./components/Professor/loginProfessor";
+import LoginAluno from "./components/Aluno/loginAluno";
 
 const App = () => {
   return (
@@ -29,6 +31,8 @@ const App = () => {
         <Route path="/disciplina/aluno/create" element={<CreateAlunoDisciplina />} />
         <Route path="/disciplina/aluno/get" element={<GetAlunoDisciplina />} />
         <Route path="/disciplina/aluno/update" element={<UpdateAlunoDisciplina />} />
+        <Route path="/professor/login" element={<LoginProfessor/>}/>
+        <Route path="/aluno/login" element={<LoginAluno/>}/>
       </Routes>
     </Router>
   );

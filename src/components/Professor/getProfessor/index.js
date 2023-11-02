@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 
 const GetProfessor = () => {
@@ -6,8 +7,8 @@ const GetProfessor = () => {
   useEffect(() => {
     const consulta = async () => {
       try {
-        const resposta = await fetch("http://localhost:8080/professores/2");
-
+        const resposta = await fetch("http://localhost:8080/professores/1");
+        
         const dados = await resposta.json();
         console.log(JSON.stringify(dados));
 
@@ -21,7 +22,7 @@ const GetProfessor = () => {
 
   return (
     <div>
-      <h4>Dados do Professor</h4>
+      <Typography variant="h5"> Dados do professor</Typography>
       <br />
       <table id="professor">
         <thead>
