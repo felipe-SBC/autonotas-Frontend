@@ -28,8 +28,8 @@ const App = () => {
         <Route path="/aluno/update" element={<UpdateAluno />} />
         <Route path="/aluno/get" element={<GetAluno />} />
         <Route path="/disciplina/create" element={<CreateDisciplina />} />
-        <Route path="/disciplina/update" element={<UpdateDisciplina />} />
-        <Route path="/disciplina/get" element={<GetDisciplina />} />
+        <Route path="/disciplina/update/:id_disciplina" element={<UpdateDisciplina />} />
+        <Route path="/disciplina/get/:id_disciplina" element={<GetDisciplina />} />
         <Route path="/disciplina/aluno/create" element={<CreateAlunoDisciplina />} />
         <Route path="/disciplina/aluno/get" element={<GetAlunoDisciplina />} />
         <Route path="/disciplina/aluno/update" element={<UpdateAlunoDisciplina />} />

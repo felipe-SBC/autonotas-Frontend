@@ -1,8 +1,10 @@
 import { TextField, Grid, Button, Typography, Paper } from "@mui/material";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreateDisciplina = () => {
   const [disciplina, setDisciplina] = useState({});
+  const navigate = useNavigate()
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -15,7 +17,6 @@ const CreateDisciplina = () => {
     alert(JSON.stringify(disciplina));
     try {
       const resposta = await fetch("http://localhost:8080/disciplinas", {
-        mode: 'no-cors',
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -26,6 +27,7 @@ const CreateDisciplina = () => {
     } catch (error) {
       console.log(error);
     }
+    navigate('/')
   };
 
   return (
@@ -35,7 +37,7 @@ const CreateDisciplina = () => {
             elevation={2}
             sx={{
               backgroundColor: '#F7F9F9', paddingTop: '36px', paddingBottom: '36px', borderRadius: '10px', width: '400px',
-              textAlign: 'center'
+              textAlign: 'center', marginTop: '15%', marginLeft: '40%'
             }}
           >
           <Grid container spacing={2}>

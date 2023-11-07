@@ -21,7 +21,7 @@ const columns = [
 ];
 
 const Dashboard = () => {
-    const [rows, setRows] = useState([])
+    const [rows, setRows] = useState([{}])
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -33,6 +33,7 @@ const Dashboard = () => {
             console.log(JSON.stringify(dados));
     
             setRows(dados);
+            console.log(rows)
           } catch (error) {
             console.log(error);
           }
@@ -41,24 +42,24 @@ const Dashboard = () => {
     }, []);
 
     const handleClick = (id) => {
-        navigate(`/disciplina/get/${id}`)
+      navigate(`/disciplina/get/${id}`)
     }
     return (
         <Box>
-            <DataGrid 
-                getRowId={() => uuidv4()}
-                onRowClick={handleClick(rows.id_disciplina)}
-                rows={rows}
-                columns={columns}
-                initialState={{
-                  pagination: {
-                    paginationModel: {
-                      pageSize: 5,
-                    },
+          <DataGrid 
+              getRowId={() => uuidv4()}
+              rows={rows}
+              columns={columns}
+              initialState={{
+                pagination: {
+                  paginationModel: {
+                    pageSize: 5,
                   },
-                }}
-                pageSizeOptions={[5]}
-            />
+                },
+              }}
+              pageSizeOptions={[5]}
+              onRowClick={(params) => handleClick(params.row.id_disciplina)}
+          />
         </Box>
     )
 }

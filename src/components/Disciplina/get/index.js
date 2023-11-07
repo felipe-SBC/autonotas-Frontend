@@ -1,12 +1,16 @@
+import { Button, Grid, Paper, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const GetDisciplina = () => {
   const [disciplina, setDisciplina] = useState({});
+  const {id_disciplina} = useParams();
+  const navigate = useNavigate()
 
   useEffect(() => {
     const consulta = async () => {
       try {
-        const resposta = await fetch(`http://localhost:8080/disciplinas/`);
+        const resposta = await fetch(`http://localhost:8080/disciplinas/${id_disciplina}`);
 
         const dados = await resposta.json();
         console.log(JSON.stringify(dados));
@@ -19,24 +23,34 @@ const GetDisciplina = () => {
     consulta();
   }, []);
 
+  const handleClick = () => {
+    navigate(`/disciplina/update/${id_disciplina}`)
+  }
+
   return (
     <div>
-      <h4>Dados da Disciplina</h4>
-      <br />
-      <table id="disciplina">
-        <thead>
-          <tr>
-            <th>Nome da Disciplina</th>
-            <th>Nome do Professor</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr key={disciplina.idDisciplina}>
-            <td>{disciplina.nomeDisciplina}</td>
-            <td>{disciplina.nomeProfessor}</td>
-          </tr>
-        </tbody>
-      </table>
+      <Paper 
+        elevation={2}
+        sx={{
+          backgroundColor: '#F7F9F9', paddingTop: '36px', paddingBottom: '36px', borderRadius: '10px', width: '400px',
+          textAlign: 'center', marginTop: '15%', marginLeft: '40%'
+        }}
+      >
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Typography variant="h5">Dados da Disciplina</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography>{"Disciplina: " + disciplina.nomeDisciplina}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography>{"Professor: " + disciplina.nomeProfessor}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Button onClick={() => handleClick()} variant="contained">Atualizar</Button>
+          </Grid>
+        </Grid>
+      </Paper>
     </div>
   );
 };

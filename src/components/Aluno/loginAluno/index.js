@@ -16,7 +16,6 @@ const LoginAluno = () => {
         alert(JSON.stringify(login));
         try {
           const resposta = await fetch("http://localhost:8080/aluno/login", {
-            mode: 'no-cors',
             method: "POST",
             headers: {
               "Content-Type": "application/json"
@@ -37,7 +36,7 @@ const LoginAluno = () => {
                     elevation={2}
                     sx={{
                     backgroundColor: '#F7F9F9', paddingTop: '36px', paddingBottom: '36px', borderRadius: '10px', width: '400px',
-                    textAlign: 'center'
+                    textAlign: 'center', marginTop: '15%', marginLeft: '40%'
                     }}
                 >
                 <Grid container spacing={2}>
