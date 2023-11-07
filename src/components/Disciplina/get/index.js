@@ -6,7 +6,7 @@ const GetDisciplina = () => {
   useEffect(() => {
     const consulta = async () => {
       try {
-        const resposta = await fetch("http://localhost:8080/disciplinas/1");
+        const resposta = await fetch(`http://localhost:8080/disciplinas/`);
 
         const dados = await resposta.json();
         console.log(JSON.stringify(dados));

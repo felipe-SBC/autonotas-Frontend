@@ -40,14 +40,14 @@ const Dashboard = () => {
         consulta();
     }, []);
 
-    const handleClick = () => {
-        navigate("/disciplina/get")
+    const handleClick = (id) => {
+        navigate(`/disciplina/get/${id}`)
     }
     return (
         <Box>
             <DataGrid 
                 getRowId={() => uuidv4()}
-                onRowClick={handleClick}
+                onRowClick={handleClick(rows.id_disciplina)}
                 rows={rows}
                 columns={columns}
                 initialState={{
