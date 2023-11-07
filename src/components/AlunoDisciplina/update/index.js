@@ -12,7 +12,7 @@ const UpdateAlunoDisciplina = () => {
   useEffect(() => {
     const consulta = async () => {
       try {
-        const resposta = await fetch("http://localhost:8080/alunosDisciplinas/2");
+        const resposta = await fetch("http://localhost:8080/alunosDisciplinas/1");
 
         const dados = await resposta.json();
         console.log(JSON.stringify(dados));

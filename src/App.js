@@ -14,11 +14,13 @@ import GetAlunoDisciplina from "./components/AlunoDisciplina/get";
 import UpdateAlunoDisciplina from "./components/AlunoDisciplina/update";
 import LoginProfessor from "./components/Professor/loginProfessor";
 import LoginAluno from "./components/Aluno/loginAluno";
+import Dashboard from "./components/Dashboard";
 
 const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Dashboard />} />
         <Route path="/professor/create" element={<CreateProfessor />} />
         <Route path="/professor/update" element={<UpdateProfessor />} />
         <Route path="/professor/get" element={<GetProfessor />} />
