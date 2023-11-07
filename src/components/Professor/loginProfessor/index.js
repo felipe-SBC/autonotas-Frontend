@@ -16,13 +16,13 @@ const LoginProfessor = () => {
         alert(JSON.stringify(login));
         try {
           const resposta = await fetch("http://localhost:8080/login", {
+            mode: 'no-cors',
             method: "POST",
             headers: {
               "Content-Type": "application/json"
             },
             body: JSON.stringify(login)
           });
-          console.log(resposta);
           return resposta;
         } catch (error) {
           console.log(error);

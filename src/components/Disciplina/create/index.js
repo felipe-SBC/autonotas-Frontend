@@ -15,6 +15,7 @@ const CreateDisciplina = () => {
     alert(JSON.stringify(disciplina));
     try {
       const resposta = await fetch("http://localhost:8080/disciplinas", {
+        mode: 'no-cors',
         method: "POST",
         headers: {
           "Content-Type": "application/json"

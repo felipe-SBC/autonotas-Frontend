@@ -14,6 +14,7 @@ const CreateAluno = () => {
     alert(JSON.stringify(aluno));
     try {
       const resposta = await fetch("http://localhost:8080/alunos", {
+        mode: 'no-cors',
         method: "POST",
         headers: {
           "Content-Type": "application/json"

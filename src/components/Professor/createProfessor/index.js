@@ -15,6 +15,7 @@ const CreateProfessor = () => {
     alert(JSON.stringify(professor));
     try {
       const resposta = await fetch("http://localhost:8080/professores", {
+        mode: 'no-cors',
         method: "POST",
         headers: {
           "Content-Type": "application/json"
