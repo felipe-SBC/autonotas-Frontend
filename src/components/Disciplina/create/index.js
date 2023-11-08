@@ -1,30 +1,33 @@
 import { TextField, Grid, Button, Typography, Paper } from "@mui/material";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const CreateProfessor = () => {
-  const [professor, setProfessor] = useState({});
+const CreateDisciplina = () => {
+  const [disciplina, setDisciplina] = useState({});
+  const navigate = useNavigate()
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setProfessor((values) => ({ ...values, [name]: value }));
+    setDisciplina((values) => ({ ...values, [name]: value }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    alert(JSON.stringify(professor));
+    alert(JSON.stringify(disciplina));
     try {
-      const resposta = await fetch("http://localhost:8080/professores", {
+      const resposta = await fetch("http://localhost:8080/disciplinas", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(professor)
+        body: JSON.stringify(disciplina)
       });
       return resposta;
     } catch (error) {
       console.log(error);
     }
+    navigate('/')
   };
 
   return (
@@ -39,22 +42,16 @@ const CreateProfessor = () => {
           >
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <Typography variant="h5">Fazer Cadastro</Typography>
+              <Typography variant="h5">Criar Disciplina</Typography>
             </Grid>
             <Grid item xs={12}>
-              <TextField id="nome" name="nome" label="Nome" value={professor.nome} onChange={handleChange} variant="outlined"/>
+              <TextField id="nomeDisciplina" name="nomeDisciplina" label="Nome da Disciplina" value={disciplina.nomeDisciplina} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-              <TextField id="telefone" name="telefone" label="Telefone" value={professor.telefone} onChange={handleChange} variant="outlined"/>
+              <TextField id="idProfessor" name="idProfessor" label="Id do Professor" value={disciplina.idProfessor} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-              <TextField id="email" name="email" type="email" label="Email" value={professor.email} onChange={handleChange} variant="outlined"/>
-            </Grid>
-            <Grid item xs={12}>
-              <TextField id="senha" type="password" name="senha" label="Senha" value={professor.senha} onChange={handleChange} variant="outlined"/>
-            </Grid>
-            <Grid item xs={12}>
-              <Button type="submit" variant="contained">Enviar</Button>
+              <Button type="submit" variant="contained">Criar</Button>
             </Grid>
           </Grid>
         </Paper>
@@ -63,4 +60,4 @@ const CreateProfessor = () => {
   );
 };
 
-export default CreateProfessor;
+export default CreateDisciplina;

@@ -1,3 +1,4 @@
+import { Grid, Typography, Paper, TextField, Button } from "@mui/material";
 import React, { useState } from "react";
 
 const CreateAluno = () => {
@@ -20,6 +21,7 @@ const CreateAluno = () => {
         },
         body: JSON.stringify(aluno)
       });
+      console.log(aluno)
       return resposta;
     } catch (error) {
       console.log(error);
@@ -29,63 +31,40 @@ const CreateAluno = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h4>Fazer cadastro</h4>
-        <label>
-          Nome:
-          <input
-            name="nome"
-            type="text"
-            value={aluno.nome || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          Curso:
-          <input
-            name="curso"
-            type="text"
-            value={aluno.curso || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          RA:
-          <input
-            name="ra"
-            type="text"
-            value={aluno.ra || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          Email:
-          <input
-            name="email"
-            type="text"
-            value={aluno.email || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          Senha:
-          <input
-            name="senha"
-            type="password"
-            value={aluno.senha || ""}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <input type="submit" />
+        <Paper 
+          elevation={2}
+          sx={{
+            backgroundColor: '#F7F9F9', paddingTop: '36px', paddingBottom: '36px', borderRadius: '10px', width: '400px',
+            textAlign: 'center', marginTop: '15%', marginLeft: '30%'
+          }}
+        >
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography color='black' variant="h6">Cadastrar Aluno</Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField id="nome" name="nome" label="Nome do Aluno" value={aluno.nome} onChange={handleChange} variant="outlined"/>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField id="curso" name="curso" label="Curso" value={aluno.curso} onChange={handleChange} variant="outlined"/>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField id="ra" name="ra" label="RA do Aluno" value={aluno.ra} onChange={handleChange} variant="outlined"/>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField id="cep" name="cep" label="CEP" value={aluno.cep} onChange={handleChange} variant="outlined"/>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField id="email" name="email" type="email" label="Email do aluno" value={aluno.email} onChange={handleChange} variant="outlined"/>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField id="senha" name="senha" type="password" label="Senha do Aluno" value={aluno.senha} onChange={handleChange} variant="outlined"/>
+            </Grid>
+            <Grid item xs={12}>
+              <Button type="submit" variant="contained">Criar Aluno</Button>
+            </Grid>
+          </Grid>
+        </Paper>
       </form>
     </div>
   );
