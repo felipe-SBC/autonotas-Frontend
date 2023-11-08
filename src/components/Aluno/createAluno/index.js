@@ -21,6 +21,7 @@ const CreateAluno = () => {
         },
         body: JSON.stringify(aluno)
       });
+      console.log(aluno)
       return resposta;
     } catch (error) {
       console.log(error);
@@ -34,7 +35,7 @@ const CreateAluno = () => {
           elevation={2}
           sx={{
             backgroundColor: '#F7F9F9', paddingTop: '36px', paddingBottom: '36px', borderRadius: '10px', width: '400px',
-            textAlign: 'center', marginTop: '15%', marginLeft: '40%'
+            textAlign: 'center', marginTop: '15%', marginLeft: '30%'
           }}
         >
           <Grid container spacing={2}>
@@ -42,22 +43,22 @@ const CreateAluno = () => {
               <Typography color='black' variant="h6">Cadastrar Aluno</Typography>
             </Grid>
             <Grid item xs={12}>
-              <TextField id="nome" label="Nome da Aluno" value={aluno.nome} onChange={handleChange} variant="outlined"/>
+              <TextField id="nome" name="nome" label="Nome do Aluno" value={aluno.nome} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-              <TextField id="curso" label="Curso" value={aluno.curso} onChange={handleChange} variant="outlined"/>
+              <TextField id="curso" name="curso" label="Curso" value={aluno.curso} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-              <TextField id="ra" label="RA do Aluno" value={aluno.ra} onChange={handleChange} variant="outlined"/>
+              <TextField id="ra" name="ra" label="RA do Aluno" value={aluno.ra} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-              <TextField id="cep" label="CEP" value={aluno.cep} onChange={handleChange} variant="outlined"/>
+              <TextField id="cep" name="cep" label="CEP" value={aluno.cep} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-              <TextField id="email" type="email" label="Email do aluno" value={aluno.email} onChange={handleChange} variant="outlined"/>
+              <TextField id="email" name="email" type="email" label="Email do aluno" value={aluno.email} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-              <TextField id="senha" type="password" label="Senha do Aluno" value={aluno.senha} onChange={handleChange} variant="outlined"/>
+              <TextField id="senha" name="senha" type="password" label="Senha do Aluno" value={aluno.senha} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
               <Button type="submit" variant="contained">Criar Aluno</Button>
