@@ -1,4 +1,4 @@
-import { AppBar, Grid, Toolbar, Typography } from "@mui/material";
+import { AppBar, Button, Grid, Toolbar, Typography } from "@mui/material";
 import React from "react";
 
 const Header = () => {
@@ -8,7 +8,7 @@ const Header = () => {
                 <Toolbar>
                     <Grid container spacing={2}>
                         <Grid item xs={2} sx={{textAlign: 'center'}}>
-                            <Typography>Auto Notas</Typography>
+                            <Button href="/"><Typography color='white'>Auto Notas</Typography></Button>
                         </Grid>
                     </Grid>
                 </Toolbar>
