@@ -15,8 +15,7 @@ const LoginProfessor = () => {
         event.preventDefault();
         alert(JSON.stringify(login));
         try {
-          const resposta = await fetch(`http://localhost:8080/login/${login.login}/${login.senha}`, {
-            mode: 'no-cors',
+          const resposta = await fetch("http://localhost:8080/professores/login", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
@@ -24,6 +23,12 @@ const LoginProfessor = () => {
             body: JSON.stringify(login)
           });
           console.log(resposta);
+          if(resposta.ok){
+            const data = await resposta.json();
+            console.log(`resposta do server:${data}` )
+          }else{
+            console.log(`Erro na aplicação: ${resposta.status}`)
+          }
           return resposta;
         } catch (error) {
           console.log(error);
@@ -45,7 +50,7 @@ const LoginProfessor = () => {
                         <Typography variant="h5">Fazer Login</Typography>
                     </Grid>
                     <Grid item xs={12}>
-                        <TextField id="login" label="E-mail" name="login" value={login.login} onChange={handleChange} variant="outlined"/>
+                        <TextField id="email" label="E-mail" name="email" value={login.email} onChange={handleChange} variant="outlined"/>
                     </Grid>
                     <Grid item xs={12}>
                         <TextField id="senha" label="Senha" name="senha" type="password" value={login.senha} onChange={handleChange} variant="outlined"/>
