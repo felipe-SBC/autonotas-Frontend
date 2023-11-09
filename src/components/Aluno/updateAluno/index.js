@@ -30,7 +30,7 @@ const UpdateAluno = () => {
   const handleClick = async (event) => {
     try {
       const resposta = await fetch(
-        `http://localhost:8080/alunos/${aluno.id}`,
+        `http://localhost:8080/alunos/${userId}`,
         {
           method: "DELETE",
           headers: {

@@ -30,9 +30,9 @@ const LoginAluno = () => {
           if(resposta.ok){
             const id = await resposta.json();
             alert("Login realizado com sucesso!");
-            navigate(`/aluno/get`);
             console.log(`Resposta do server:${id}`)
             setUserId(id);
+            navigate(`/aluno/get`);
           }else{
             console.log(`Erro na aplicação: ${resposta.status}`)
           }

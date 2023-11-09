@@ -10,7 +10,7 @@ const GetAluno = () => {
   const [aluno, setAluno] = useState({});
 
   useEffect(() => {
-    const consulta = async () => {
+    const consulta = async () => { 
       try {
         const resposta = await fetch(`http://localhost:8080/alunos/${userId}`);
 
