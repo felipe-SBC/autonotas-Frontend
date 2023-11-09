@@ -1,4 +1,4 @@
-import { TextField, Grid, Button, Typography, Paper } from "@mui/material";
+import { TextField, Grid, Button, Typography, Paper, Box } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { UserContext } from "../../../Context";
@@ -43,13 +43,13 @@ const LoginAluno = () => {
     };
 
     return(
-        <div>
+      <Box sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
             <form onSubmit={handleSubmit}>
                 <Paper 
                     elevation={2}
                     sx={{
                     backgroundColor: '#F7F9F9', paddingTop: '36px', paddingBottom: '36px', borderRadius: '10px', width: '400px',
-                    textAlign: 'center', marginTop: '15%', marginLeft: '40%'
+                    textAlign: 'center', marginTop: '20%'
                     }}
                 >
                 <Grid container spacing={2}>
@@ -68,7 +68,7 @@ const LoginAluno = () => {
                 </Grid>
                 </Paper>
             </form>
-        </div>
+        </Box>
     )
 }
 

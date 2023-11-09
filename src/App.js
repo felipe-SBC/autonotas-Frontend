@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/professor/update" element={<UpdateProfessor />} />
         <Route path="/professor/get" element={<GetProfessor />} />
         <Route path="/aluno/create" element={<CreateAluno />} />
-        <Route path="/aluno/update" element={<UpdateAluno />} />
+        <Route path="/aluno/update/:userId" element={<UpdateAluno />} />
         <Route path="/aluno/get" element={<GetAluno />} />
         <Route path="/disciplina/create" element={<CreateDisciplina />} />
         <Route path="/disciplina/update/:id_disciplina" element={<UpdateDisciplina />} />
