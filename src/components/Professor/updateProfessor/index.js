@@ -1,6 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../../Context";
+
 
 const UpdateProfessor = () => {
+
+  const {userId} = useContext(UserContext)
   const [professor, setProfessor] = useState({});
 
   const handleChange = (event) => {
@@ -12,7 +16,7 @@ const UpdateProfessor = () => {
   useEffect(() => {
     const consulta = async () => {
       try {
-        const resposta = await fetch("http://localhost:8080/professores/2");
+        const resposta = await fetch(`http://localhost:8080/professores/${userId}`);
 
         const dados = await resposta.json();
         console.log(JSON.stringify(dados));
@@ -28,7 +32,7 @@ const UpdateProfessor = () => {
   const handleClick = async (event) => {
     try {
       const resposta = await fetch(
-        `http://localhost:8080/professores/${professor.id}`,
+        `http://localhost:8080/professores/${userId}`,
         {
           method: "DELETE",
           headers: {
@@ -37,6 +41,7 @@ const UpdateProfessor = () => {
           body: JSON.stringify(professor)
         }
       );
+      alert("Usuário Excluido com sucesso")
       return resposta;
     } catch (error) {
       console.log(error);

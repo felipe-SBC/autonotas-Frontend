@@ -24,7 +24,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/professor/create" element={<CreateProfessor />} />
-        <Route path="/professor/update" element={<UpdateProfessor />} />
+        <Route path="/professor/update/:userId" element={<UpdateProfessor />} />
         <Route path="/professor/get" element={<GetProfessor />} />
         <Route path="/aluno/create" element={<CreateAluno />} />
         <Route path="/aluno/update/:userId" element={<UpdateAluno />} />

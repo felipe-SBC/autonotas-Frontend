@@ -1,9 +1,13 @@
-import { TextField, Grid, Button, Typography, Paper } from "@mui/material";
-import { useState } from "react";
+import { TextField, Grid, Button, Typography, Paper, Box } from "@mui/material";
+import { useContext, useState } from "react";
+import { UserContext } from "../../../Context";
+import { useNavigate } from "react-router-dom";
 
 const LoginProfessor = () => {
 
+    const {userId, setUserId} = useContext(UserContext)
     const [login, setLogin] = useState({})
+    const navigate = useNavigate()
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -24,8 +28,11 @@ const LoginProfessor = () => {
           });
           console.log(resposta);
           if(resposta.ok){
-            const data = await resposta.json();
-            console.log(`Resposta do server:${data}` )
+            const id = await resposta.json();
+            alert("Login realizado com sucesso!")
+            console.log(`Resposta do server:${id}`)
+            setUserId(id)
+            navigate(`/professor/get`)
           }else{
             console.log(`Erro na aplicação: ${resposta.status}`)
           }
@@ -36,13 +43,13 @@ const LoginProfessor = () => {
     };
 
     return(
-        <div>
+        <Box sx={{display: "flex", justifyContent: "center", alignItems: "center"}}>
             <form onSubmit={handleSubmit}>
                 <Paper 
                     elevation={2}
                     sx={{
                     backgroundColor: '#F7F9F9', paddingTop: '36px', paddingBottom: '36px', borderRadius: '10px', width: '400px',
-                    textAlign: 'center'
+                    textAlign: 'center', marginTop: "20%"
                     }}
                 >
                 <Grid container spacing={2}>
@@ -61,7 +68,7 @@ const LoginProfessor = () => {
                 </Grid>
                 </Paper>
             </form>
-        </div>
+        </Box>
     )
 }
  

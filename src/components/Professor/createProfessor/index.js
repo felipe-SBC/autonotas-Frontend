@@ -21,6 +21,7 @@ const CreateProfessor = () => {
         },
         body: JSON.stringify(professor)
       });
+      alert("Cadastro feito com sucesso!")
       return resposta;
     } catch (error) {
       console.log(error);
@@ -48,7 +49,7 @@ const CreateProfessor = () => {
               <TextField id="telefone" name="telefone" label="Telefone" value={professor.telefone} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-              <TextField id="dataNascimento" type="date" name="dataNascimento" label="Data de Nascimento" value={professor.dataNascimento} onChange={handleChange} variant="outlined"/>
+              <TextField id="data_nascimento" type="date" name="data_nascimento" value={professor.data_nascimento} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
               <TextField id="email" name="email" type="email" label="Email" value={professor.email} onChange={handleChange} variant="outlined"/>
