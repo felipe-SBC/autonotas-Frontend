@@ -48,6 +48,9 @@ const CreateProfessor = () => {
               <TextField id="telefone" name="telefone" label="Telefone" value={professor.telefone} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
+              <TextField id="dataNascimento" type="date" name="dataNascimento" label="Data de Nascimento" value={professor.dataNascimento} onChange={handleChange} variant="outlined"/>
+            </Grid>
+            <Grid item xs={12}>
               <TextField id="email" name="email" type="email" label="Email" value={professor.email} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>

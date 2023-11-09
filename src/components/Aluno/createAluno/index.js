@@ -10,6 +10,14 @@ const CreateAluno = () => {
     setAluno((values) => ({ ...values, [name]: value }));
   };
 
+  const validateCep = (cep) => {
+    if (cep ===""){
+      return true;
+    }
+    const regex = /^\d{8}$/;
+    return regex.test(cep);
+  }; 
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     alert(JSON.stringify(aluno));
@@ -52,7 +60,7 @@ const CreateAluno = () => {
               <TextField id="ra" name="ra" label="RA do Aluno" value={aluno.ra} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-              <TextField id="cep" name="cep" label="CEP" value={aluno.cep} onChange={handleChange} variant="outlined"/>
+              <TextField id="cep" name="cep" label="CEP" value={aluno.cep} onChange={handleChange} variant="outlined" error={!validateCep(aluno.cep)} helperText={!validateCep(aluno.cep) && "CEP inválido"}/>
             </Grid>
             <Grid item xs={12}>
               <TextField id="email" name="email" type="email" label="Email do aluno" value={aluno.email} onChange={handleChange} variant="outlined"/>

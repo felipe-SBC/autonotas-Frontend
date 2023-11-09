@@ -85,15 +85,6 @@ const CreateAlunoDisciplina = () => {
         </label>
         <br />
         <br />
-        <label>
-          Média:
-          <input
-            name="media"
-            type="text"
-            value={alunoDisciplina.media || ""}
-            onChange={handleChange}
-          />
-        </label>
         <br />
         <br />
         <input type="submit" />
