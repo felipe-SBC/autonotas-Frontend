@@ -1,9 +1,13 @@
 import { TextField, Grid, Button, Typography, Paper } from "@mui/material";
-import { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router";
+import { UserContext } from "../../../Context";
 
 const LoginAluno = () => {
 
-    const [login, setLogin] = useState({})
+    const {userId, setUserId} = useContext(UserContext);
+    const [login, setLogin] = useState({});
+    const navigate = useNavigate();
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -15,7 +19,7 @@ const LoginAluno = () => {
         event.preventDefault();
         alert(JSON.stringify(login));
         try {
-          const resposta = await fetch("http://localhost:8080/aluno/login", {
+          const resposta = await fetch("http://localhost:8080/alunos/login", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
@@ -23,6 +27,15 @@ const LoginAluno = () => {
             body: JSON.stringify(login)
           });
           console.log(resposta);
+          if(resposta.ok){
+            const id = await resposta.json();
+            alert("Login realizado com sucesso!");
+            navigate(`/aluno/get`);
+            console.log(`Resposta do server:${id}`)
+            setUserId(id);
+          }else{
+            console.log(`Erro na aplicação: ${resposta.status}`)
+          }
           return resposta;
         } catch (error) {
           console.log(error);
@@ -58,5 +71,5 @@ const LoginAluno = () => {
         </div>
     )
 }
- 
+
 export default LoginAluno;

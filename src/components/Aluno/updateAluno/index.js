@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../../Context";
 
 const UpdateAluno = () => {
   const [aluno, setAluno] = useState({});
+  const {userId} = useContext(UserContext);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -12,7 +14,7 @@ const UpdateAluno = () => {
   useEffect(() => {
     const consulta = async () => {
       try {
-        const resposta = await fetch("http://localhost:8080/alunos/1");
+        const resposta = await fetch(`http://localhost:8080/alunos/${userId}`);
 
         const dados = await resposta.json();
         console.log(JSON.stringify(dados));

@@ -25,7 +25,7 @@ const LoginProfessor = () => {
           console.log(resposta);
           if(resposta.ok){
             const data = await resposta.json();
-            console.log(`resposta do server:${data}` )
+            console.log(`Resposta do server:${data}` )
           }else{
             console.log(`Erro na aplicação: ${resposta.status}`)
           }

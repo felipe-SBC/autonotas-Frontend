@@ -15,10 +15,12 @@ import UpdateAlunoDisciplina from "./components/AlunoDisciplina/update";
 import LoginProfessor from "./components/Professor/loginProfessor";
 import LoginAluno from "./components/Aluno/loginAluno";
 import Dashboard from "./components/Dashboard";
+import { UserProvider } from "./Context";
 
 const App = () => {
   return (
     <Router>
+      <UserProvider>
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/professor/create" element={<CreateProfessor />} />
@@ -36,6 +38,7 @@ const App = () => {
         <Route path="/professor/login" element={<LoginProfessor/>}/>
         <Route path="/aluno/login" element={<LoginAluno/>}/>
       </Routes>
+      </UserProvider>
     </Router>
   );
 };
