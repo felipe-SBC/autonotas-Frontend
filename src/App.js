@@ -22,7 +22,7 @@ const App = () => {
     <Router>
       <UserProvider>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/professor/home" element={<Dashboard />} />
         <Route path="/professor/create" element={<CreateProfessor />} />
         <Route path="/professor/update/:userId" element={<UpdateProfessor />} />
         <Route path="/professor/get" element={<GetProfessor />} />

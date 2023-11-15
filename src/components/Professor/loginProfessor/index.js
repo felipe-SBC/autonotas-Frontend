@@ -32,7 +32,7 @@ const LoginProfessor = () => {
             alert("Login realizado com sucesso!")
             console.log(`Resposta do server:${id}`)
             setUserId(id)
-            navigate(`/professor/get`)
+            navigate(`/professor/home`)
           }else{
             console.log(`Erro na aplicação: ${resposta.status}`)
           }

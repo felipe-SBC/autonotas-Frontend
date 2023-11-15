@@ -1,19 +1,21 @@
 import { Box } from "@mui/material"
 import { DataGrid } from '@mui/x-data-grid';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
+import { UserContext } from "../../Context";
+
 
 const columns = [
-    { field: 'id_disciplina', headerName: 'Disciplina', width: 90 },
+    { field: 'idDisciplina', headerName: 'Disciplina', width: 90 },
     {
-      field: 'nome_disciplina',
+      field: 'nomeDisciplina',
       headerName: 'Nome da Disciplina',
       width: 150,
       editable: true,
     },
     {
-      field: 'nome_professor',
+      field: 'nomeProfessor',
       headerName: 'Nome do Professor',
       width: 150,
       editable: true,
@@ -23,15 +25,20 @@ const columns = [
 const Dashboard = () => {
     const [rows, setRows] = useState([{}])
     const navigate = useNavigate()
+    const {userId} = useContext(UserContext)
+    const idProfesosr = userId
+
+    console.log(idProfesosr)
+
 
     useEffect(() => {
         const consulta = async () => {
           try {
-            const resposta = await fetch("http://localhost:8080/disciplinas");
-    
+            const resposta = await fetch(`http://localhost:8080/disciplinas/professor/disciplina/${idProfesosr}`);
+            
             const dados = await resposta.json();
             console.log(JSON.stringify(dados));
-    
+            
             setRows(dados);
             console.log(rows)
           } catch (error) {
@@ -58,7 +65,7 @@ const Dashboard = () => {
                 },
               }}
               pageSizeOptions={[5]}
-              onRowClick={(params) => handleClick(params.row.id_disciplina)}
+              onRowClick={(params) => handleClick(params.row.idDisciplina)}
           />
         </Box>
     )

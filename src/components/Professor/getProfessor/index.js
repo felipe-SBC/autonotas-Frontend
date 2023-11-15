@@ -49,7 +49,7 @@ const GetProfessor = () => {
             <Typography>{"E-mail: " + professor.email}</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography>{"Data de Nascimento: " + professor.data_nascimento}</Typography>
+            <Typography>{"Data de Nascimento: " + professor.dataNascimento}</Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography>{"Telefone: " + professor.telefone}</Typography>

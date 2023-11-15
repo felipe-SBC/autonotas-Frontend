@@ -23,11 +23,12 @@ const CreateDisciplina = () => {
         },
         body: JSON.stringify(disciplina)
       });
+      navigate('/professor/home')
       return resposta;
     } catch (error) {
       console.log(error);
     }
-    navigate('/')
+    
   };
 
   return (

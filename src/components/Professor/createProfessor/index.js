@@ -1,9 +1,11 @@
 import { TextField, Grid, Button, Typography, Paper } from "@mui/material";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const CreateProfessor = () => {
   const [professor, setProfessor] = useState({});
-
+  const navigate =  useNavigate()
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -21,7 +23,9 @@ const CreateProfessor = () => {
         },
         body: JSON.stringify(professor)
       });
+
       alert("Cadastro feito com sucesso!")
+      navigate("/professor/login")
       return resposta;
     } catch (error) {
       console.log(error);
