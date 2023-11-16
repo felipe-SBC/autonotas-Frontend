@@ -17,7 +17,6 @@ const LoginProfessor = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        alert(JSON.stringify(login));
         try {
           const resposta = await fetch("http://localhost:8080/professores/login", {
             method: "POST",
@@ -61,6 +60,9 @@ const LoginProfessor = () => {
                     </Grid>
                     <Grid item xs={12}>
                         <TextField id="senha" label="Senha" name="senha" type="password" value={login.senha} onChange={handleChange} variant="outlined"/>
+                    </Grid>
+                    <Grid item xs={12} textAlign='center'>
+                      <Typography variant="caption"><a href="/professor/create">Cadastre-se</a></Typography>
                     </Grid>
                     <Grid item xs={12}>
                         <Button type="submit" variant="contained">Enviar</Button>

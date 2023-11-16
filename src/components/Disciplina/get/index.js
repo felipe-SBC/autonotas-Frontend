@@ -1,4 +1,4 @@
-import { Button, Grid, Paper, Typography } from "@mui/material";
+import { Box, Button, Grid, Paper, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -28,12 +28,12 @@ const GetDisciplina = () => {
   }
 
   return (
-    <div>
+    <Box sx={{display:'flex', justifyContent:'center', alignItems:'center'}}>
       <Paper 
         elevation={2}
         sx={{
           backgroundColor: '#F7F9F9', paddingTop: '36px', paddingBottom: '36px', borderRadius: '10px', width: '400px',
-          textAlign: 'center', marginTop: '15%', marginLeft: '40%'
+          textAlign: 'center', marginTop: '70px'
         }}
       >
         <Grid container spacing={2}>
@@ -51,7 +51,7 @@ const GetDisciplina = () => {
           </Grid>
         </Grid>
       </Paper>
-    </div>
+    </Box>
   );
 };
 

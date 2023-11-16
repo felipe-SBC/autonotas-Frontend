@@ -1,4 +1,4 @@
-import { TextField, Grid, Button, Typography, Paper } from "@mui/material";
+import { TextField, Grid, Button, Typography, Paper, Box } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +14,6 @@ const CreateProfessor = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    alert(JSON.stringify(professor));
     try {
       const resposta = await fetch("http://localhost:8080/professores", {
         method: "POST",
@@ -35,11 +34,12 @@ const CreateProfessor = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <Paper 
             elevation={2}
             sx={{
               backgroundColor: '#F7F9F9', paddingTop: '36px', paddingBottom: '36px', borderRadius: '10px', width: '400px',
-              textAlign: 'center', marginTop: '15%', marginLeft: '40%'
+              textAlign: 'center', marginTop: '70px'
             }}
           >
           <Grid container spacing={2}>
@@ -53,7 +53,7 @@ const CreateProfessor = () => {
               <TextField id="telefone" name="telefone" label="Telefone" value={professor.telefone} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-              <TextField id="data_nascimento" type="date" name="data_nascimento" value={professor.data_nascimento} onChange={handleChange} variant="outlined"/>
+              <TextField sx={{width: '56%'}} id="dataNascimento" type="date" name="data_nascimento" value={professor.data_nascimento} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
               <TextField id="email" name="email" type="email" label="Email" value={professor.email} onChange={handleChange} variant="outlined"/>
@@ -66,6 +66,7 @@ const CreateProfessor = () => {
             </Grid>
           </Grid>
         </Paper>
+        </Box>
       </form>
     </div>
   );

@@ -11,13 +11,13 @@ const columns = [
     {
       field: 'nomeDisciplina',
       headerName: 'Nome da Disciplina',
-      width: 150,
+      width: 500,
       editable: true,
     },
     {
       field: 'nomeProfessor',
       headerName: 'Nome do Professor',
-      width: 150,
+      width: 300,
       editable: true,
     },
 ];
@@ -26,15 +26,15 @@ const Dashboard = () => {
     const [rows, setRows] = useState([{}])
     const navigate = useNavigate()
     const {userId} = useContext(UserContext)
-    const idProfesosr = userId
+    const idProfessor = userId
 
-    console.log(idProfesosr)
+    console.log(idProfessor)
 
 
     useEffect(() => {
         const consulta = async () => {
           try {
-            const resposta = await fetch(`http://localhost:8080/disciplinas/professor/disciplina/${idProfesosr}`);
+            const resposta = await fetch(`http://localhost:8080/disciplinas/professor/disciplina/${idProfessor}`);
             
             const dados = await resposta.json();
             console.log(JSON.stringify(dados));

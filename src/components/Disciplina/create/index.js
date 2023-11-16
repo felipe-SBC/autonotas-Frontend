@@ -1,9 +1,11 @@
-import { TextField, Grid, Button, Typography, Paper } from "@mui/material";
-import React, { useState } from "react";
+import { TextField, Grid, Button, Typography, Paper, Box } from "@mui/material";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../Context";
 
 const CreateDisciplina = () => {
   const [disciplina, setDisciplina] = useState({});
+  const {userId} = useContext(UserContext)
   const navigate = useNavigate()
 
   const handleChange = (event) => {
@@ -14,14 +16,17 @@ const CreateDisciplina = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    alert(JSON.stringify(disciplina));
     try {
+      const dados = {
+        nomeDisciplina: disciplina.nomeDisciplina,
+        idProfessor: userId
+      }
       const resposta = await fetch("http://localhost:8080/disciplinas", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(disciplina)
+        body: JSON.stringify(dados)
       });
       navigate('/professor/home')
       return resposta;
@@ -34,11 +39,12 @@ const CreateDisciplina = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
         <Paper 
             elevation={2}
             sx={{
               backgroundColor: '#F7F9F9', paddingTop: '36px', paddingBottom: '36px', borderRadius: '10px', width: '400px',
-              textAlign: 'center', marginTop: '15%', marginLeft: '40%'
+              textAlign: 'center', marginTop: '70px'
             }}
           >
           <Grid container spacing={2}>
@@ -49,13 +55,11 @@ const CreateDisciplina = () => {
               <TextField id="nomeDisciplina" name="nomeDisciplina" label="Nome da Disciplina" value={disciplina.nomeDisciplina} onChange={handleChange} variant="outlined"/>
             </Grid>
             <Grid item xs={12}>
-              <TextField id="idProfessor" name="idProfessor" label="Id do Professor" value={disciplina.idProfessor} onChange={handleChange} variant="outlined"/>
-            </Grid>
-            <Grid item xs={12}>
               <Button type="submit" variant="contained">Criar</Button>
             </Grid>
           </Grid>
         </Paper>
+        </Box>
       </form>
     </div>
   );
