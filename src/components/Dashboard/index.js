@@ -1,4 +1,4 @@
-import { Box } from "@mui/material"
+import { Box, Button, Grid } from "@mui/material"
 import { DataGrid } from '@mui/x-data-grid';
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -51,11 +51,23 @@ const Dashboard = () => {
     const handleClick = (id) => {
       navigate(`/disciplina/get/${id}`)
     }
+
+    const handleCreate = () => {
+      navigate(`/disciplina/create`)
+    }
     return (
         <Box>
-          <DataGrid 
+          <Grid container spacing={2} sx={{marginTop:"50px"}}>
+            <Grid item xs={12} sx={{textAlign:"right"}}>
+                <Button onClick={handleCreate} variant="contained" size="large">
+                  Criar disciplina
+                </Button>
+            </Grid>
+            <Grid item xs={12} >
+            <DataGrid 
               getRowId={() => uuidv4()}
               rows={rows}
+              
               columns={columns}
               initialState={{
                 pagination: {
@@ -67,8 +79,12 @@ const Dashboard = () => {
               pageSizeOptions={[5]}
               onRowClick={(params) => handleClick(params.row.idDisciplina)}
           />
+            </Grid>
+          </Grid>
+          
         </Box>
     )
+
 }
 
 export default Dashboard
